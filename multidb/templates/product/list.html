@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div class="page-header">
+    <h1 style="margin: 0px;display: inline-block">Products</h1>
+    <a href="{% url 'products:create' %}" class="btn btn-primary" style="float: right; margin-top: 5px;"> Create Product</a>
+    </div>
+    <hr/>
+    <table style="width:100%">
+          <tr>
+            <th>Name</th>
+            <th>Description</th>
+            <th>DB</th>
+            <th>Action</th>
+          </tr>
+    {% for object in product_list %}
+          <tr>
+            <td>{{ object.name }}</td>
+            <td>{{ object.description }}</td>
+            <td>{{ object.db }}</td>
+              <td>
+                  <a href="{% url 'products:update' db=object.db pk=object.id %}" class="btn btn-primary btn-sm" style="display: inline">Edit</a>
+                  <form method="post" action="{% url 'products:delete' db=object.db pk=object.id %}" style="display: inline">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                  </form>
+              </td>
+          </tr>
+    {% endfor %}
+     </table>
+{% endblock %}

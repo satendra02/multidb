@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>New Product</h1>
+    <hr/>
+    <form method="POST" class="post-form">
+        <select name="database">
+            {% for d in databases %}
+                <option value="{{ d }}">{{ d }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="save btn btn-primary">Save</button>
+    </form>
+{% endblock %}
