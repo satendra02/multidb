@@ -5,7 +5,7 @@ Requirements:
 --------------
 
 * Databases: PostgreSQL DB and My SQL DB.
-* Django 1.10 with Python.
+* Django 1.11 with Python.
 * Multi setting for local and production environments.
 * Proper Readme file with setup instruction.
 
